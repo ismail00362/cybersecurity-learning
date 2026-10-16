@@ -24,8 +24,10 @@ Topics will be added as I study and practice them:
 | Path | Purpose |
 | --- | --- |
 | [`notes/nmap-scan-concepts.md`](notes/nmap-scan-concepts.md) | General notes on TCP and UDP scanning, scan states, and interpreting results |
+| [`labs/tryhackme-further-nmap.md`](labs/tryhackme-further-nmap.md) | Learning record for the completed Further Nmap room |
+| [`labs/local-tcp-port-state.md`](labs/local-tcp-port-state.md) | Localhost exercise comparing open and closed TCP port states |
 | `notes/` | Concept notes organized by topic as the portfolio grows |
-| `labs/` | Future lab reports, written without flags, credentials, or target-sensitive details |
+| `labs/` | Sanitized reports from authorized training labs |
 
 ## Documentation standard
 
