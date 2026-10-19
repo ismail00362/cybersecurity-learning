@@ -55,6 +55,35 @@ A port state describes what the scan could infer at the time of the test. Starti
 2. What does `--reason` add to the scan output?
 3. Why is scanning `127.0.0.1` a useful safe starting point for this experiment?
 
+## Service and version detection
+
+A basic port scan reports the inferred state of a port. Adding `-sV` asks Nmap to send service-detection probes to an open port and try to identify the service and, when possible, its software version.
+
+Run this while the local server is listening:
+
+```bash
+nmap -sT -sV -p 8000 127.0.0.1
+```
+
+Compare it with the basic scan:
+
+```bash
+nmap -sT -p 8000 127.0.0.1
+```
+
+| Scan | Main purpose |
+| --- | --- |
+| `-sT` | Check whether a TCP connection can be established to the selected port. |
+| `-sT -sV` | Check the port and probe the service to identify its name and possible version. |
+
+Nmap's service and version identification is based on the responses it receives. The result may be incomplete or uncertain, so treat it as a fingerprint to verify rather than guaranteed truth. The actual service and version labels depend on the server response and Nmap's detection database.
+
+### Evidence to record
+
+- Service/version shown by the basic scan: [record what Nmap displayed]
+- Service/version shown with `-sV`: [record what Nmap displayed]
+- What extra information did `-sV` provide? [explain in your own words]
+
 ## Responsible use
 
 Keep this exercise on loopback. Do not replace the target with a public or third-party system unless you have explicit authorization.
