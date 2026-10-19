@@ -84,6 +84,37 @@ Nmap's service and version identification is based on the responses it receives.
 - Service/version shown with `-sV`: [record what Nmap displayed]
 - What extra information did `-sV` provide? [explain in your own words]
 
+## Reading Nmap Output
+
+Use the headings and values together. The line below is a field guide, not scan output:
+
+```text
+PORT  STATE  SERVICE  VERSION  REASON
+```
+
+| Field | How to interpret it |
+| --- | --- |
+| `PORT` | The port number and transport protocol, such as `8000/tcp`. |
+| `STATE` | Nmap's inference for that port: `open`, `closed`, `filtered`, or sometimes `open or filtered`. |
+| `SERVICE` | A service name associated with the port or identified by probing. Without `-sV`, it may only be the conventional name from Nmap's port database. |
+| `VERSION` | The product and version Nmap could identify from service responses; it may be unknown or uncertain. |
+| `REASON` | The response or observation that supports the state, shown when using `--reason`. Exact reason labels vary by scan type and response. |
+
+### Interpret the whole result
+
+- `Host is up` means Nmap considers the host reachable; it does not mean every port is open.
+- `closed` means the host responded, but no service accepted a connection on that port at scan time.
+- `filtered` means Nmap could not determine the port state clearly. A `no-response` reason means no reply arrived; it does not by itself prove that the host is down or identify why the reply is missing.
+- A summary such as `Not shown: 997 closed tcp ports` means Nmap scanned those ports and omitted repetitive results from the detailed list. It refers only to the ports included in that scan, not necessarily every port on the host.
+- Treat service and version identification as evidence to verify, not proof that a particular vulnerability exists.
+
+### Reflection
+
+1. What is the difference between a port state and a service name?
+2. Does `Host is up` mean that a selected port is open?
+3. What does `no-response` tell you, and what does it not prove?
+4. What does `Not shown` mean in a port summary?
+
 ## Responsible use
 
 Keep this exercise on loopback. Do not replace the target with a public or third-party system unless you have explicit authorization.
